@@ -1,5 +1,5 @@
 <h1 align="center">Fliessux 🦟</h1>
-<p align="center">Balloonsux is a game that you basically have to KILL MOSQUITO and if they find the bottle of water, you lose 1 life. You have a total of 3 lives.</p>
+<p align="center">Fliessux is a game that you basically have to KILL MOSQUITO and if they find the bottle of water, you lose 1 life. You have a total of 3 lives.</p>
 <h2 align="center"><a href="https://rachzy.github.io/balloonsux/" target="_blank">Click here to Play!</a></h2>
 
 ## Infrastructure
