@@ -12,7 +12,7 @@
 
 ## Credits
 ### Images
-<a href="[https://valentin_studios.artstation.com/projects/20zVA]" title="mosquito gifs">Mosquito gifs created by Lucas Valentin Petersen on Artstation</a>
+<a href="https://valentin_studios.artstation.com/projects/20zVA" title="mosquito gifs">Mosquito gifs created by Lucas Valentin Petersen on Artstation</a>
 
 ### Sounds
 <p>Soundtrack - <a href="https://www.youtube.com/watch?v=NqCzFqKukPA">"Four Bits to the Left"</a> - Five Night's at Freddy's Pizzeria Simulator by Scott Cawthon</p>
