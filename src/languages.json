@@ -1,0 +1,20 @@
+{
+    "pt-br": {
+        "your_score": "Seus pontos",
+        "game_over": "Você perdeu!",
+        "play_again": "Jogar novamente",
+        "play": "Jogar"
+    },
+    "en": {
+        "your_score": "Your score",
+        "game_over": "Game Over!",
+        "play_again": "Play Again",
+        "play": "Play"
+    },
+    "es": {
+        "your_score": "Tu puntuación",
+        "game_over": "Game Over!",
+        "play_again": "Play Again",
+        "play": "Play"
+    }  
+}

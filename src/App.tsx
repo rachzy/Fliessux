@@ -6,8 +6,80 @@ import Button from "./Components/Button";
 import Title from "./Components/Title";
 import PointsDisplayer from "./Components/PointsDisplayer";
 import Subtitle from "./Components/Subtitle";
+import { ICustomLanguages, ILanguage, ILanguages } from "./types";
 
 const App = () => {
+  const languages: ILanguage[] = [
+    {
+      language: "pt-br",
+      icon: "./assets/images/br-icon.png"
+    },
+    {
+      language: "en",
+      icon: "./assets/images/en-icon.png"
+    },
+    {
+      language: "es",
+      icon: "./assets/images/spn-icon.png"
+    },
+  ]
+
+  const customLanguages: ICustomLanguages[] = [
+    {
+      language: "pt-br",
+      languages: [
+        {
+          language: languages[0],
+          title: "Português"
+        },
+        {
+          language: languages[1],
+          title: "Inglês"
+        },
+        {
+          language: languages[2],
+          title: "Narcotráfico"
+        },
+      ]
+    },
+    {
+      language: "en",
+      languages: [
+        {
+          language: languages[0],
+          title: "Brazilian"
+        },
+        {
+          language: languages[1],
+          title: "English"
+        },
+        {
+          language: languages[2],
+          title: "Mexican"
+        },
+      ]
+    },
+    {
+      language: "es",
+      languages: [
+        {
+          language: languages[0],
+          title: "Macacos y Pelé"
+        },
+        {
+          language: languages[1],
+          title: "Inglés"
+        },
+        {
+          language: languages[2],
+          title: "Español"
+        },
+      ]
+    },
+  ]
+
+  const [selectedLanguage, setSelectedLanguage] = useState<ICustomLanguages>(customLanguages[0]);
+     
   const [gameStarted, setGameStarted] = useState(false);
   const [gameOver, setGameOver] = useState(false);
   const [score, setScore] = useState(0);
@@ -49,7 +121,7 @@ const App = () => {
   return (
     <div className="main-wrapper">
       <Title>Fliessux</Title>
-      <Subtitle>rachzy & oBST01</Subtitle>
+      <Subtitle>By rachzy & oBST01</Subtitle>
       <Button onClick={handleButtonClick}>Play</Button>
     </div>
   );
