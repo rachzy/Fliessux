@@ -1,5 +1,5 @@
-<h1 align="center">Balloonsux 🎈</h1>
-<p align="center">Balloonsux is a game that you basically have to pop balloons and if they fall out of the screen, you lose 1 life. You have a total of 3 lives.</p>
+<h1 align="center">Fliessux 🦟</h1>
+<p align="center">Balloonsux is a game that you basically have to KILL MOSQUITO and if they find the bottle of water, you lose 1 life. You have a total of 3 lives.</p>
 <h2 align="center"><a href="https://rachzy.github.io/balloonsux/" target="_blank">Click here to Play!</a></h2>
 
 ## Infrastructure
@@ -12,7 +12,7 @@
 
 ## Credits
 ### Images
-<a href="https://www.flaticon.com/free-icons/balloon" title="balloon icons">Balloon icons created by Pixel perfect - Flaticon</a>
+<a href="[https://valentin_studios.artstation.com/projects/20zVA]" title="mosquito gifs">Mosquito gifs created by Lucas Valentin Petersen on Artstation</a>
 
 ### Sounds
 <p>Soundtrack - <a href="https://www.youtube.com/watch?v=NqCzFqKukPA">"Four Bits to the Left"</a> - Five Night's at Freddy's Pizzeria Simulator by Scott Cawthon</p>
