@@ -1,0 +1,9 @@
+h1.title {
+  text-align: center;
+  color: white;
+
+  font-family: "Montserrat", sans-serif;
+  font-size: 3vmax;
+
+  line-height: 0px;
+}

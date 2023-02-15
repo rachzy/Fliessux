@@ -1,0 +1,22 @@
+button.default-btn {
+  width: 30%;
+  min-width: 40vh;
+
+  background-color: rgb(169, 0, 185);
+  color: white;
+
+  padding: 2vh;
+
+  font-size: 3vh;
+  font-weight: bold;
+
+  border-radius: 10px;
+  border: none;
+
+  cursor: pointer;
+  transition: 0.2s all;
+}
+
+button.default-btn:hover {
+  transform: scale(1.1);
+}
