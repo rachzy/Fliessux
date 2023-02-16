@@ -9,21 +9,21 @@ export interface IBallon {
   };
 }
 
-type language = "pt-br" | "en" | "es"
+type language = "pt-br" | "en" | "es";
 
 export interface ILanguage {
   language: language;
   icon: string;
 }
 
-interface ICustomLanguage {
+export interface ICustomLanguage {
   title: string;
   language: ILanguage;
 }
 
 export interface ICustomLanguages {
-  language: language
-  languages: ICustomLanguage[]
+  language: language;
+  languages: ICustomLanguage[];
 }
 
 export interface ILanguages {

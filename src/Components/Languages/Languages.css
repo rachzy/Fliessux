@@ -1,0 +1,31 @@
+@keyframes fadeIn {
+  0% {
+    opacity: 0%;
+  }
+  100% {
+    opacity: 100%;
+  }
+}
+
+div.languages-container {
+  display: flex;
+  flex-direction: column;
+
+  position: absolute;
+
+  justify-content: end;
+  align-items: end;
+
+  top: 0;
+  right: 0;
+}
+
+div.languages-container button p {
+  display: none;
+}
+
+div.languages-container.active button p {
+  display: block;
+  opacity: 100%;
+  animation: fadeIn 0.4s;
+}

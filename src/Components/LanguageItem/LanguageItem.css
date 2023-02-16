@@ -1,0 +1,39 @@
+@keyframes fadeIn {
+  0% {
+    opacity: 0%;
+  }
+  100% {
+    opacity: 100%;
+  }
+}
+
+button.language {
+  display: none;
+
+  justify-content: center;
+  align-items: center;
+
+  background: none;
+  border: none;
+  outline: none;
+
+  cursor: pointer;
+}
+
+button.language.active {
+  display: flex;
+  opacity: 100%;
+  animation: fadeIn 0.4s;
+}
+
+button.language img {
+  width: 7vh;
+  height: 7vh;
+  margin: 2vh;
+}
+
+button.language p {
+  color: white;
+  font-family: "Poppins", sans-serif;
+  font-size: 1.5em;
+}
