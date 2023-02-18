@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import "./Game.css";
 
-import Ballon from "../Balloon";
+import Fly from "../Fly";
 import PointsDisplayer from "../PointsDisplayer";
 
 import generateRandomNumber from "../../functions/generateRandomNumber";
 import pickRandom from "../../functions/pickRandom";
 
-import { IBallon, colors } from "../../types";
+import { IFly } from "../../types";
+import Raquete from "../Raquete";
 
 interface IProps {
   score: number;
@@ -16,13 +17,19 @@ interface IProps {
 }
 
 const Game: React.FC<IProps> = ({ score, setScore, setGameOver }) => {
-  const [balloons, setBalloons] = useState<IBallon[]>([]);
-  const [balloonSpawningInterval, setBalloonSpawningInterval] = useState(1000);
-  const [balloonSpawningFunction, setBalloonSpawningFunction] =
+  const [flies, setBalloons] = useState<IFly[]>([]);
+  const [flieSpawningInterval, setBalloonSpawningInterval] = useState(1000);
+  const [flieSpawningFunction, setBalloonSpawningFunction] =
     useState<NodeJS.Timer>();
 
+  // Raquete positions
+  const [raquetePositions, setRaquetePositions] = useState({
+    x: 0,
+    y: 0,
+  });
+
   //Audios
-  const [balloonPopAudio, setBalloonPopAudio] = useState(
+  const [flyPopAudio, setBalloonPopAudio] = useState(
     new Audio(require("../../assets/audios/pop.mp3"))
   );
   const [hitAudio, setHitAudio] = useState(
@@ -31,22 +38,20 @@ const Game: React.FC<IProps> = ({ score, setScore, setGameOver }) => {
 
   const [remainingLives, setRemainingLives] = useState(3);
 
-  const colors: colors[] = ["red", "blue", "green", "yellow"];
-
   //Function that will be triggered when the user clicks in a Balloon
   const handleBalloonClick = (ballonId: number) => {
     setBalloons((currentBalloons) => {
       return currentBalloons.filter((ballon) => ballon.id !== ballonId);
     });
     setScore((currentScore) => currentScore + 1);
-    balloonPopAudio.currentTime = 0.7;
-    balloonPopAudio.volume = 1;
-    balloonPopAudio.play();
+    flyPopAudio.currentTime = 0.7;
+    flyPopAudio.volume = 1;
+    flyPopAudio.play();
   };
 
-  //useEffect to spawn balloons at a certain period of time
+  //useEffect to spawn flies at a certain period of time
   useEffect(() => {
-    clearInterval(balloonSpawningFunction);
+    clearInterval(flieSpawningFunction);
     setBalloonSpawningFunction(
       setInterval(() => {
         setBalloons((currentBalloons) => {
@@ -54,7 +59,6 @@ const Game: React.FC<IProps> = ({ score, setScore, setGameOver }) => {
             ...currentBalloons,
             {
               id: Date.now(),
-              color: pickRandom(colors),
               position: {
                 x: generateRandomNumber(10, 90),
                 y: 2,
@@ -63,29 +67,29 @@ const Game: React.FC<IProps> = ({ score, setScore, setGameOver }) => {
             },
           ];
         });
-      }, balloonSpawningInterval)
+      }, flieSpawningInterval)
     );
-  }, [balloonSpawningInterval, generateRandomNumber]);
+  }, [flieSpawningInterval, generateRandomNumber]);
 
-  //useEffect to make every balloon goes down
-  //and check if there's a balloon at the very bottom
+  //useEffect to make every fly goes down
+  //and check if there's a fly at the very bottom
   useEffect(() => {
     setInterval(() => {
       setBalloons((currentBalloons) => {
-        //Add 0.1 in Y for every balloon
-        const newCurrentBalloons = currentBalloons.map((balloon) => {
+        //Add 0.1 in Y for every fly
+        const newCurrentBalloons = currentBalloons.map((fly) => {
           return {
-            ...balloon,
+            ...fly,
             position: {
-              x: balloon.position.x,
-              y: balloon.position.y + 1,
+              x: fly.position.x,
+              y: fly.position.y + 1,
             },
           };
         });
 
-        //Check if there's a balloon at the extreme bottom of the page
-        newCurrentBalloons.forEach((balloon) => {
-          if (balloon.position.y < 100) return; //Y Limit
+        //Check if there's a fly at the extreme bottom of the page
+        newCurrentBalloons.forEach((fly) => {
+          if (fly.position.y < 100) return; //Y Limit
           //If Y is greater than this, decrease a life from the player
           hitAudio.currentTime = 0.2;
           hitAudio.play();
@@ -94,8 +98,8 @@ const Game: React.FC<IProps> = ({ score, setScore, setGameOver }) => {
           );
         });
 
-        //Return only balloons that have the Y position lower than 100
-        return newCurrentBalloons.filter((balloon) => balloon.position.y < 100);
+        //Return only flies that have the Y position lower than 100
+        return newCurrentBalloons.filter((fly) => fly.position.y < 100);
       });
     }, 400);
   }, [hitAudio]);
@@ -119,8 +123,17 @@ const Game: React.FC<IProps> = ({ score, setScore, setGameOver }) => {
     setGameOver(true);
   }, [remainingLives, setGameOver]);
 
+  // function that will make the player cursor become a raquete
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    setRaquetePositions({
+      x: e.clientX,
+      y: e.clientY,
+    });
+  };
+
   return (
-    <div>
+    <div className="game-container" onMouseMove={handleMouseMove}>
+      <Raquete x={raquetePositions.x} y={raquetePositions.y} />
       <div className="details-container">
         <PointsDisplayer
           text="Your score"
@@ -133,13 +146,9 @@ const Game: React.FC<IProps> = ({ score, setScore, setGameOver }) => {
           pointsColor={"red"}
         />
       </div>
-      {balloons.map((ballon) => {
+      {flies.map((ballon) => {
         return (
-          <Ballon
-            key={ballon.id}
-            onClick={handleBalloonClick}
-            ballon={ballon}
-          />
+          <Fly key={ballon.id} onClick={handleBalloonClick} fly={ballon} />
         );
       })}
     </div>

@@ -1,0 +1,15 @@
+img.raquete {
+  position: absolute;
+  z-index: 9999;
+
+  user-select: none;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -o-user-select: none;
+
+  width: 100px;
+  transform: rotate(120);
+
+  pointer-events: none;
+}
