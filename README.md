@@ -22,4 +22,4 @@
 ## License
 This project is MIT licensed, which means that you're free to do pretty much whatever you want with it. I don't require any kind of credits
 
-<p align="center"><i>~I hate balloons</i></p>
+
