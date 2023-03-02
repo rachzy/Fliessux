@@ -37,16 +37,17 @@ const Game: React.FC<IProps> = ({
 
   //Audios
   const [flyPopAudio, setFlyPopAudio] = useState(
-    new Audio(require("../../assets/audios/pop.mp3"))
+    new Audio(require("../../assets/audios/slug4.mp3"))
   );
   const [hitAudio, setHitAudio] = useState(
-    new Audio(require("../../assets/audios/hit.mp3"))
+    new Audio(require("../../assets/audios/dwop.mp3"))
   );
 
   const [remainingLives, setRemainingLives] = useState(3);
 
   //Function that will be triggered when the user clicks in a Fly
   const handleFlyClick = (flyId: number) => {
+    if (flies.filter((fly) => fly.id === flyId && !fly.alive)[0]) return;
     setFlies((currentFlies) => {
       return currentFlies.map((fly) => {
         if (fly.id !== flyId) return fly;
@@ -67,9 +68,15 @@ const Game: React.FC<IProps> = ({
       });
     }, 1000);
 
+    if (flyId % 2 === 0) {
+      setFlyPopAudio(new Audio(require("../../assets/audios/slug4.mp3")));
+    } else {
+      setFlyPopAudio(new Audio(require("../../assets/audios/slug5.mp3")));
+    }
+
     setScore((currentScore) => currentScore + 1);
-    flyPopAudio.currentTime = 0.7;
-    flyPopAudio.volume = 1;
+    flyPopAudio.currentTime = 0;
+    flyPopAudio.volume = 0.5;
     flyPopAudio.play();
   };
 

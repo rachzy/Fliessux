@@ -97,7 +97,6 @@ const App = () => {
     setGameOver(false);
     setGameStarted(true);
     setScore(0);
-    soundtrack.currentTime = 0;
   };
 
   if (gameOver) {
