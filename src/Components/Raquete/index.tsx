@@ -10,7 +10,7 @@ const Raquete: React.FC<IProps> = ({ x, y }) => {
   return (
     <img
       className="raquete"
-      style={{ marginLeft: x, marginTop: y }}
+      style={{ marginLeft: x - 40, marginTop: y - 20 }}
       src={require(`../../assets/images/raquete.png`)}
       alt={"raquete"}
       draggable={false}

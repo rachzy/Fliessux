@@ -8,6 +8,8 @@ img.raquete {
   -webkit-user-select: none;
   -o-user-select: none;
 
+  -webkit-user-drag: none;
+
   width: 100px;
   transform: rotate(120);
 

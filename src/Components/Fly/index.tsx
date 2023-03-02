@@ -5,22 +5,27 @@ import { IFly } from "../../types";
 
 interface IProps {
   fly: IFly;
-  onClick: (ballonId: number) => void;
+  onClick: (flyId: number) => void;
 }
 
-const Fly: React.FC<IProps> = ({ fly: ballon, onClick }) => {
+const Fly: React.FC<IProps> = ({ fly: fly, onClick }) => {
   return (
     <div
       onSelect={(e) => e.preventDefault()}
-      className="balloon"
+      className="fly"
       style={{
-        marginLeft: `${ballon.position.x}%`,
-        marginTop: `${ballon.position.y}vh`,
+        marginLeft: `${fly.position.x}%`,
+        marginTop: `${fly.position.y}vh`,
       }}
-      onClick={onClick.bind(this, ballon.id)}
+      onClick={onClick.bind(this, fly.id)}
     >
       <img
-        src={require(`../../assets/images/alive-fly.gif`)}
+        src={
+          fly.alive
+            ? require(`../../assets/images/alive-fly.gif`)
+            : require(`../../assets/images/dead-fly.gif`)
+        }
+        style={fly.alive ? { opacity: "100%" } : { opacity: "60%" }}
         alt="balloon"
         width={80}
         draggable={false}

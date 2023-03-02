@@ -4,6 +4,7 @@ export interface IFly {
     x: number;
     y: number;
   };
+  alive: boolean;
 }
 
 type language = "pt-br" | "en" | "es";

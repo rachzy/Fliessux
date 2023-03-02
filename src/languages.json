@@ -1,18 +1,21 @@
 {
   "pt-br": {
     "your_score": "Seus pontos",
+    "your_lives": "Vidas restantes",
     "game_over": "Você perdeu!",
     "play_again": "Jogar novamente",
     "play": "Jogar"
   },
   "en": {
     "your_score": "Your score",
+    "your_lives": "Remaining lives",
     "game_over": "Game Over!",
     "play_again": "Play Again",
     "play": "Play"
   },
   "es": {
     "your_score": "Tu puntuación",
+    "your_lives": "Vidas restantes",
     "game_over": "Fin de juego!",
     "play_again": "Jugar novamente",
     "play": "Jugar"

@@ -89,7 +89,7 @@ const App = () => {
   const [gameOver, setGameOver] = useState(false);
   const [score, setScore] = useState(0);
 
-  const [soundtrack, setSoundtrack] = useState(
+  const [soundtrack] = useState(
     new Audio(require("./assets/audios/soundtrack.mp3"))
   );
 
@@ -122,7 +122,15 @@ const App = () => {
 
   if (gameStarted) {
     soundtrack.play();
-    return <Game score={score} setScore={setScore} setGameOver={setGameOver} />;
+    return (
+      <Game
+        score={score}
+        setScore={setScore}
+        setGameOver={setGameOver}
+        yourScoreLabel={languageLabels[selectedLanguage.language].your_score}
+        yourLivesLabel={languageLabels[selectedLanguage.language].your_lives}
+      />
+    );
   }
 
   return (
