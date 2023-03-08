@@ -6,25 +6,37 @@ import PointsDisplayer from "../PointsDisplayer";
 
 import generateRandomNumber from "../../functions/generateRandomNumber";
 
-import { IFly } from "../../types";
+import { IFly, ISkill } from "../../types";
 import Raquete from "../Raquete";
+import SkillCard from "../SkillCard";
 
 interface IProps {
+  flies: IFly[];
+  setFlies: React.Dispatch<React.SetStateAction<IFly[]>>;
+  money: number;
+  setMoney: React.Dispatch<React.SetStateAction<number>>;
   score: number;
   setScore: React.Dispatch<React.SetStateAction<number>>;
   setGameOver: React.Dispatch<React.SetStateAction<boolean>>;
   yourScoreLabel: string;
   yourLivesLabel: string;
+  yourMoneyLabel: string;
+  skills: ISkill[];
 }
 
 const Game: React.FC<IProps> = ({
+  flies,
+  setFlies,
   score,
+  money,
+  setMoney,
   setScore,
   setGameOver,
   yourScoreLabel,
   yourLivesLabel,
+  yourMoneyLabel,
+  skills,
 }) => {
-  const [flies, setFlies] = useState<IFly[]>([]);
   const [flieSpawningInterval, setFlySpawningInterval] = useState(1000);
   const [flieSpawningFunction, setFlySpawningFunction] =
     useState<NodeJS.Timer>();
@@ -75,6 +87,8 @@ const Game: React.FC<IProps> = ({
     }
 
     setScore((currentScore) => currentScore + 1);
+    setMoney((currentValue) => currentValue + 1);
+
     flyPopAudio.currentTime = 0;
     flyPopAudio.volume = 0.5;
     flyPopAudio.play();
@@ -170,6 +184,11 @@ const Game: React.FC<IProps> = ({
       <Raquete x={raquetePositions.x} y={raquetePositions.y} />
       <div className="details-container">
         <PointsDisplayer
+          text={yourMoneyLabel}
+          points={money}
+          pointsColor={"green"}
+        />
+        <PointsDisplayer
           text={yourScoreLabel}
           points={score}
           pointsColor={"yellow"}
@@ -182,6 +201,16 @@ const Game: React.FC<IProps> = ({
       </div>
       {flies.map((fly) => {
         return <Fly key={fly.id} onClick={handleFlyClick} fly={fly} />;
+      })}
+      {skills.map((skill) => {
+        return (
+          <SkillCard
+            key={skill.title}
+            money={money}
+            setMoney={setMoney}
+            skill={skill}
+          />
+        );
       })}
     </div>
   );

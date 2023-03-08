@@ -2,12 +2,14 @@
   "pt-br": {
     "your_score": "Seus pontos",
     "your_lives": "Vidas restantes",
+    "your_money": "Seu saldo",
     "game_over": "Você perdeu!",
     "play_again": "Jogar novamente",
     "play": "Jogar"
   },
   "en": {
     "your_score": "Your score",
+    "your_money": "Your money",
     "your_lives": "Remaining lives",
     "game_over": "Game Over!",
     "play_again": "Play Again",
@@ -16,6 +18,7 @@
   "es": {
     "your_score": "Tu puntuación",
     "your_lives": "Vidas restantes",
+    "your_money": "Su saldo",
     "game_over": "Fin de juego!",
     "play_again": "Jugar novamente",
     "play": "Jugar"

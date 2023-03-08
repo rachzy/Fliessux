@@ -27,3 +27,10 @@ export interface ICustomLanguages {
 export interface ILanguages {
   languages: ILanguage[];
 }
+
+export interface ISkill {
+  title: string;
+  thumbnail: string;
+  cost: number;
+  execute: () => void;
+}

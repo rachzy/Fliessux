@@ -6,7 +6,7 @@ import Button from "./Components/Button";
 import Title from "./Components/Title";
 import PointsDisplayer from "./Components/PointsDisplayer";
 import Subtitle from "./Components/Subtitle";
-import { ICustomLanguages, ILanguage, ILanguages } from "./types";
+import { ICustomLanguages, IFly, ILanguage, ISkill } from "./types";
 
 import languageLabels from "./languages.json";
 import Languages from "./Components/Languages";
@@ -88,10 +88,44 @@ const App = () => {
   const [gameStarted, setGameStarted] = useState(false);
   const [gameOver, setGameOver] = useState(false);
   const [score, setScore] = useState(0);
+  const [money, setMoney] = useState(0);
 
   const [soundtrack] = useState(
     new Audio(require("./assets/audios/soundtrack.mp3"))
   );
+
+  const [flies, setFlies] = useState<IFly[]>([]);
+
+  function killAllFlies() {
+    setFlies((currentFlies) =>
+      currentFlies.map((fly) => {
+        setTimeout(() => {
+          setFlies((currentAliveFlies) => {
+            return currentAliveFlies.filter(
+              (aliveFly) => aliveFly.id !== fly.id
+            );
+          });
+        }, 1000);
+
+        return {
+          ...fly,
+          alive: false,
+        };
+      })
+    );
+
+    new Audio(require("./assets/audios/slug4.mp3")).play();
+    setScore((currentScore) => currentScore + 1);
+  }
+
+  const skills: ISkill[] = [
+    {
+      title: "PNCD",
+      thumbnail: "mosquito-pncd.jpg",
+      cost: 120,
+      execute: killAllFlies,
+    },
+  ];
 
   const handleButtonClick = () => {
     setGameOver(false);
@@ -123,11 +157,17 @@ const App = () => {
     soundtrack.play();
     return (
       <Game
+        flies={flies}
+        setFlies={setFlies}
         score={score}
+        money={money}
+        setMoney={setMoney}
         setScore={setScore}
         setGameOver={setGameOver}
         yourScoreLabel={languageLabels[selectedLanguage.language].your_score}
         yourLivesLabel={languageLabels[selectedLanguage.language].your_lives}
+        yourMoneyLabel={languageLabels[selectedLanguage.language].your_money}
+        skills={skills}
       />
     );
   }
