@@ -11,8 +11,6 @@ import Raquete from "../Raquete";
 import SkillCard from "../SkillCard";
 
 interface IProps {
-  flies: IFly[];
-  setFlies: React.Dispatch<React.SetStateAction<IFly[]>>;
   money: number;
   setMoney: React.Dispatch<React.SetStateAction<number>>;
   score: number;
@@ -21,12 +19,9 @@ interface IProps {
   yourScoreLabel: string;
   yourLivesLabel: string;
   yourMoneyLabel: string;
-  skills: ISkill[];
 }
 
 const Game: React.FC<IProps> = ({
-  flies,
-  setFlies,
   score,
   money,
   setMoney,
@@ -35,7 +30,6 @@ const Game: React.FC<IProps> = ({
   yourScoreLabel,
   yourLivesLabel,
   yourMoneyLabel,
-  skills,
 }) => {
   const [flieSpawningInterval, setFlySpawningInterval] = useState(1000);
   const [flieSpawningFunction, setFlySpawningFunction] =
@@ -56,6 +50,40 @@ const Game: React.FC<IProps> = ({
   );
 
   const [remainingLives, setRemainingLives] = useState(3);
+
+  const [flies, setFlies] = useState<IFly[]>([]);
+
+  // Skills
+  function killAllFlies() {
+    setFlies((currentFlies) =>
+      currentFlies.map((fly) => {
+        setTimeout(() => {
+          setFlies((currentAliveFlies) => {
+            return currentAliveFlies.filter(
+              (aliveFly) => aliveFly.id !== fly.id
+            );
+          });
+        }, 1000);
+
+        return {
+          ...fly,
+          alive: false,
+        };
+      })
+    );
+
+    new Audio(require("../../assets/audios/slug4.mp3")).play();
+    setScore((currentScore) => currentScore + 1);
+  }
+
+  const skills: ISkill[] = [
+    {
+      title: "PNCD",
+      thumbnail: "mosquito-pncd.jpg",
+      cost: 120,
+      execute: killAllFlies,
+    },
+  ];
 
   //Function that will be triggered when the user clicks in a Fly
   const handleFlyClick = (flyId: number) => {
@@ -121,6 +149,7 @@ const Game: React.FC<IProps> = ({
   //and check if there's a fly at the very bottom
   useEffect(() => {
     setInterval(() => {
+      if (remainingLives < 1) return;
       setFlies((currentFlies) => {
         //Add 0.1 in Y for every fly
         const newCurrentFlies = currentFlies.map((fly) => {
@@ -155,6 +184,7 @@ const Game: React.FC<IProps> = ({
   //useEffect to decrease the fly spawning interval in every 10 seconds
   useEffect(() => {
     const spawningIntervalDecreaser = setInterval(() => {
+      if (remainingLives < 1) return;
       setFlySpawningInterval((currentValue) => {
         if (currentValue <= 200) {
           clearInterval(spawningIntervalDecreaser);
@@ -169,6 +199,9 @@ const Game: React.FC<IProps> = ({
   useEffect(() => {
     if (remainingLives > 0) return;
     setGameOver(true);
+    setMoney(0);
+    setFlies([]);
+    setFlySpawningInterval(1000);
   }, [remainingLives, setGameOver]);
 
   // function that will make the player cursor become a raquete

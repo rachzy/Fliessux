@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 import Game from "./Components/Game";
 
@@ -94,38 +94,10 @@ const App = () => {
     new Audio(require("./assets/audios/soundtrack.mp3"))
   );
 
-  const [flies, setFlies] = useState<IFly[]>([]);
-
-  function killAllFlies() {
-    setFlies((currentFlies) =>
-      currentFlies.map((fly) => {
-        setTimeout(() => {
-          setFlies((currentAliveFlies) => {
-            return currentAliveFlies.filter(
-              (aliveFly) => aliveFly.id !== fly.id
-            );
-          });
-        }, 1000);
-
-        return {
-          ...fly,
-          alive: false,
-        };
-      })
-    );
-
-    new Audio(require("./assets/audios/slug4.mp3")).play();
-    setScore((currentScore) => currentScore + 1);
-  }
-
-  const skills: ISkill[] = [
-    {
-      title: "PNCD",
-      thumbnail: "mosquito-pncd.jpg",
-      cost: 120,
-      execute: killAllFlies,
-    },
-  ];
+  useEffect(() => {
+    soundtrack.currentTime = 4;
+    console.log(soundtrack.currentTime);
+  }, []);
 
   const handleButtonClick = () => {
     setGameOver(false);
@@ -134,7 +106,7 @@ const App = () => {
   };
 
   if (gameOver) {
-    soundtrack.volume = 0.3;
+    soundtrack.currentTime = 4;
     soundtrack.pause();
     return (
       <div className="main-wrapper">
@@ -154,11 +126,10 @@ const App = () => {
   }
 
   if (gameStarted) {
+    console.log(soundtrack.currentTime);
     soundtrack.play();
     return (
       <Game
-        flies={flies}
-        setFlies={setFlies}
         score={score}
         money={money}
         setMoney={setMoney}
@@ -167,7 +138,6 @@ const App = () => {
         yourScoreLabel={languageLabels[selectedLanguage.language].your_score}
         yourLivesLabel={languageLabels[selectedLanguage.language].your_lives}
         yourMoneyLabel={languageLabels[selectedLanguage.language].your_money}
-        skills={skills}
       />
     );
   }
