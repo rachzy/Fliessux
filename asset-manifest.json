@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/fliessux/static/css/main.dc2b299f.css",
-    "main.js": "/fliessux/static/js/main.930e6322.js",
+    "main.css": "/fliessux/static/css/main.ccd47f49.css",
+    "main.js": "/fliessux/static/js/main.5a985c03.js",
     "static/media/dead-fly.gif": "/fliessux/static/media/dead-fly.7ba9fe5bfdfbe0fd5ef4.gif",
     "static/media/alive-fly.gif": "/fliessux/static/media/alive-fly.4a3b44c71b08bcaf5f16.gif",
     "static/media/soundtrack.mp3": "/fliessux/static/media/soundtrack.a015c93c43aed9372212.mp3",
@@ -19,11 +19,11 @@
     "static/media/es-icon.png": "/fliessux/static/media/es-icon.7ab20088ad372c62ab72.png",
     "static/media/dwop.mp3": "/fliessux/static/media/dwop.efecc7812d83ab21170d.mp3",
     "index.html": "/fliessux/index.html",
-    "main.dc2b299f.css.map": "/fliessux/static/css/main.dc2b299f.css.map",
-    "main.930e6322.js.map": "/fliessux/static/js/main.930e6322.js.map"
+    "main.ccd47f49.css.map": "/fliessux/static/css/main.ccd47f49.css.map",
+    "main.5a985c03.js.map": "/fliessux/static/js/main.5a985c03.js.map"
   },
   "entrypoints": [
-    "static/css/main.dc2b299f.css",
-    "static/js/main.930e6322.js"
+    "static/css/main.ccd47f49.css",
+    "static/js/main.5a985c03.js"
   ]
 }
