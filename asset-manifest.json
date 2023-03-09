@@ -1,11 +1,12 @@
 {
   "files": {
-    "main.css": "/fliessux/static/css/main.16836162.css",
-    "main.js": "/fliessux/static/js/main.168b09a1.js",
+    "main.css": "/fliessux/static/css/main.dc2b299f.css",
+    "main.js": "/fliessux/static/js/main.930e6322.js",
     "static/media/dead-fly.gif": "/fliessux/static/media/dead-fly.7ba9fe5bfdfbe0fd5ef4.gif",
     "static/media/alive-fly.gif": "/fliessux/static/media/alive-fly.4a3b44c71b08bcaf5f16.gif",
     "static/media/soundtrack.mp3": "/fliessux/static/media/soundtrack.a015c93c43aed9372212.mp3",
     "static/media/raquete.png": "/fliessux/static/media/raquete.1ef2d1383dd02808db74.png",
+    "static/media/mosquito-pncd.jpg": "/fliessux/static/media/mosquito-pncd.807a345712778d7bb81f.jpg",
     "static/media/pot.png": "/fliessux/static/media/pot.723522bc76a0215f23fb.png",
     "static/media/en-icon.png": "/fliessux/static/media/en-icon.7e17dcdb92416007fab4.png",
     "static/media/slug4.mp3": "/fliessux/static/media/slug4.b694b58a3b1537ec783d.mp3",
@@ -18,11 +19,11 @@
     "static/media/es-icon.png": "/fliessux/static/media/es-icon.7ab20088ad372c62ab72.png",
     "static/media/dwop.mp3": "/fliessux/static/media/dwop.efecc7812d83ab21170d.mp3",
     "index.html": "/fliessux/index.html",
-    "main.16836162.css.map": "/fliessux/static/css/main.16836162.css.map",
-    "main.168b09a1.js.map": "/fliessux/static/js/main.168b09a1.js.map"
+    "main.dc2b299f.css.map": "/fliessux/static/css/main.dc2b299f.css.map",
+    "main.930e6322.js.map": "/fliessux/static/js/main.930e6322.js.map"
   },
   "entrypoints": [
-    "static/css/main.16836162.css",
-    "static/js/main.168b09a1.js"
+    "static/css/main.dc2b299f.css",
+    "static/js/main.930e6322.js"
   ]
 }
